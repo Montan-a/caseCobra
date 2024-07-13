@@ -3,7 +3,7 @@
 import { HTMLAttributes, useEffect, useRef, useState } from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { useInView } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn, splitArray } from "@/lib/utils";
 import Phone from "./Phone";
 
 const PHONES = [
@@ -14,20 +14,6 @@ const PHONES = [
   "/testimonials/5.jpg",
   "/testimonials/6.jpg",
 ];
-
-function splitArray<T>(array: Array<T>, numParts: number) {
-  const result: Array<Array<T>> = [];
-
-  for (let i = 0; i < array.length; i++) {
-    const index = i % numParts;
-    if (!result[index]) {
-      result[index] = [];
-    }
-    result[index].push(array[i]);
-  }
-
-  return result;
-}
 
 function ReviewColumn({
   reviews,
