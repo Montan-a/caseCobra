@@ -50,7 +50,7 @@ const Steps = () => {
               <span
                 className={cn(
                   i !== 0 ? "lg:pl-9" : "",
-                  "flex items-center px-6 py-4 text-sm font-medium"
+                  "flex items-center px-6 py-4 gap-2 lg:gap-0 text-sm font-medium"
                 )}
               >
                 <span className="flex-shrink-0">
@@ -76,6 +76,7 @@ const Steps = () => {
                     {step.name}
                   </span>
                 </span>
+
                 <span className="text-sm text-zinc-500">
                   {step.description}
                 </span>
