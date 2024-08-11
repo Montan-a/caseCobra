@@ -29,14 +29,9 @@ export const createCheckoutSession = async ({
   const { finish, material } = configuration;
 
   let price = BASE_PRICE;
-
-  if (finish === "textured") {
-    price += PRODUCT_PRICES.finish.textured;
-  }
-
-  if (material === "polycarbonate") {
+  if (finish === "textured") price += PRODUCT_PRICES.finish.textured;
+  if (material === "polycarbonate")
     price += PRODUCT_PRICES.material.polycarbonate;
-  }
 
   let order: Order | undefined = undefined;
 
@@ -46,6 +41,8 @@ export const createCheckoutSession = async ({
       configurationId: configuration.id,
     },
   });
+
+  console.log(user.id, configuration.id);
 
   if (existingOrder) {
     order = existingOrder;
@@ -60,7 +57,7 @@ export const createCheckoutSession = async ({
   }
 
   const product = await stripe.products.create({
-    name: "Custom IPhone Case",
+    name: "Custom iPhone Case",
     images: [configuration.imageUrl],
     default_price_data: {
       currency: "USD",
@@ -71,9 +68,9 @@ export const createCheckoutSession = async ({
   const stripeSession = await stripe.checkout.sessions.create({
     success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order.id}`,
     cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/configure/preview?id=${configuration.id}`,
-    payment_method_types: ["card", "paypal"],
+    payment_method_types: ["card"],
     mode: "payment",
-    shipping_address_collection: { allowed_countries: ["US"] },
+    shipping_address_collection: { allowed_countries: ["DE", "US"] },
     metadata: {
       userId: user.id,
       orderId: order.id,
