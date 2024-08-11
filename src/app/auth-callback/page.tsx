@@ -12,15 +12,12 @@ const Page = () => {
 
   useEffect(() => {
     const configurationId = localStorage.getItem("configurationId");
-    if (configurationId) {
-      setConfigId(configurationId);
-    }
+    if (configurationId) setConfigId(configurationId);
   }, []);
+
   const { data } = useQuery({
     queryKey: ["auth-callback"],
-    queryFn: async () => {
-      await getAuthStatus();
-    },
+    queryFn: async () => await getAuthStatus(),
     retry: true,
     retryDelay: 500,
   });
@@ -36,10 +33,10 @@ const Page = () => {
 
   return (
     <div className="w-full mt-24 flex justify-center">
-      <div className="flex flex-col itmes-center gap-2">
+      <div className="flex flex-col items-center gap-2">
         <Loader2 className="h-8 w-8 animate-spin text-zinc-500" />
         <h3 className="font-semibold text-xl">Logging you in...</h3>
-        <p>You will be redirected to your checkout</p>
+        <p>You will be redirected automatically.</p>
       </div>
     </div>
   );
