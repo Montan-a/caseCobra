@@ -1,9 +1,8 @@
-import React from "react";
-import MaxWidthWrapper from "./MaxWidthWrapper";
-import Link from "next/link";
-import { buttonVariants } from "./ui/button";
-import { ArrowRight } from "lucide-react";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import MaxWidthWrapper from "./MaxWidthWrapper";
+import { buttonVariants } from "./ui/button";
 
 const NavBar = async () => {
   const { getUser } = getKindeServerSession();
@@ -16,6 +15,7 @@ const NavBar = async () => {
           <Link href="/" className="flex z-40 font-semibold">
             case<span className="text-green-600">cobra</span>
           </Link>
+
           <div className="h-full flex items-center space-x-4">
             {user ? (
               <>
