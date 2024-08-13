@@ -29,7 +29,7 @@ const Page = () => {
     },
   });
 
-  const onDropRejected = (rejectedFiles: FileRejection) => {
+  const onDropRejected = (rejectedFiles: FileRejection[]) => {
     const [file] = rejectedFiles;
 
     setIsDragOver(false);
