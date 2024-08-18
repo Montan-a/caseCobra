@@ -25,6 +25,7 @@ const NavBar = async () => {
             {user ? (
               <>
                 <LogoutLink
+                  postLogoutRedirectURL="/"
                   className={buttonVariants({ size: "sm", variant: "ghost" })}
                 >
                   Log out
@@ -51,6 +52,7 @@ const NavBar = async () => {
             ) : (
               <>
                 <RegisterLink
+                  postLoginRedirectURL="/"
                   className={buttonVariants({ size: "sm", variant: "ghost" })}
                 >
                   Sign up
