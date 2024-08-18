@@ -8,13 +8,11 @@ export const getAuthStatus = async () => {
   const user = await getUser();
 
   if (!user?.id || !user.email) {
-    throw new Error("invalid user data");
+    throw new Error("Invalid user data");
   }
 
   const existingUser = await db.user.findFirst({
-    where: {
-      id: user.id,
-    },
+    where: { id: user.id },
   });
 
   if (!existingUser) {
