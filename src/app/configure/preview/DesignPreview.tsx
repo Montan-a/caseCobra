@@ -15,8 +15,15 @@ import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import LoginModal from "@/components/LoginModal";
+import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 
-const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
+const DesignPreview = ({
+  configuration,
+  user,
+}: {
+  configuration: Configuration;
+  user: KindeUser | null;
+}) => {
   const { id } = configuration;
   const { user } = useKindeBrowserClient();
 

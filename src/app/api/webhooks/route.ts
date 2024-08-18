@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { Resend } from "resend";
-import OrderReceivedEmail from "@/components/react emails/OrderReceivedEmail";
+import OrderReceivedEmail from "@/components/react-emails/OrderReceivedEmail";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
