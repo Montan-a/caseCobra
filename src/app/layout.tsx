@@ -7,9 +7,8 @@ import Providers from "@/components/Provider";
 import { constructMetadata } from "@/lib/utils";
 
 const recursive = Recursive({ subsets: ["latin"] });
-const icon = "/snake-1.png";
 
-export const metadata = constructMetadata();
+export const metadata = constructMetadata({});
 
 export default function RootLayout({
   children,
